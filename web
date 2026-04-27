@@ -1,0 +1,29 @@
+---
+- name: Configure Simple Web Application
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+
+    - name: Install Apache web server
+      apt:
+        name: apache2
+        state: present
+
+    - name: Start and enable Apache service
+      service:
+        name: apache2
+        state: started
+        enabled: yes
+
+    - name: Deploy sample web page
+      copy:
+        content: "<h1>Hello from Ansible!</h1>"
+        dest: /var/www/html/index.html
+
+
+[web]
+localhost ansible_connection=local
