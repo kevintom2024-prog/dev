@@ -5,3 +5,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface StudentRepository extends JpaRepository<Student, Long> {
     // nothing needed — JPA gives save/findAll/deleteById for free
 }
+spring.datasource.url=jdbc:mysql://localhost:3306/studentdb
+spring.datasource.username=root
+spring.datasource.password=Mysql@2026
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
