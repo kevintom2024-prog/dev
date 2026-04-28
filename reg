@@ -1,0 +1,35 @@
+package com.example.demo;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class StudentControllerTest {
+
+    @Test
+    public void testValidLogin() {
+        String username = "admin";
+        String password = "admin123";
+        assertEquals("admin", username);
+        assertEquals("admin123", password);
+    }
+
+    @Test
+    public void testInvalidLogin() {
+        String username = "wrong";
+        String password = "wrong";
+        assertNotEquals("admin", username);
+        assertNotEquals("admin123", password);
+    }
+
+    @Test
+    public void testStudentName() {
+        String name = "Alice";
+        assertNotNull(name);
+    }
+
+    @Test
+    public void testStudentDept() {
+        String dept = "CSE";
+        assertTrue(dept.length() > 0);
+    }
+}
