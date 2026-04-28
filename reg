@@ -33,3 +33,35 @@ public class StudentControllerTest {
         assertTrue(dept.length() > 0);
     }
 }
+
+trigger:
+- main
+
+pool: prac
+
+steps:
+- task: Maven@3
+  displayName: 'Maven Build and Regression Test'
+  inputs:
+    mavenPomFile: 'pom.xml'
+    mavenOptions: '-Xmx3072m'
+    javaHomeOption: 'Path'
+    jdkUserInputPath: 'C:\Program Files\Eclipse Adoptium\jdk-21.0.10.7-hotspot'
+    jdkArchitectureOption: 'x64'
+    publishJUnitResults: true
+    testResultsFiles: '**/surefire-reports/TEST-*.xml'
+    goals: 'clean test'
+
+<!-- inside <dependencies> -->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-test</artifactId>
+    <scope>test</scope>
+</dependency>
+
+<!-- inside <build><plugins> -->
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-surefire-plugin</artifactId>
+    <version>3.1.2</version>
+</plugin>
